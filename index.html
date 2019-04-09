@@ -1,5 +1,6 @@
 <!DOCTYPE html>
   <html>
+  <script>var pageStart = Date.now();</script>
   <div id="loadingScreen">
     <div class="obj"></div>
     <div class="obj"></div>
@@ -52,23 +53,7 @@
     .obj:nth-child(7){animation-delay:-0.6s;}
     .obj:nth-child(8){animation-delay:-0.7s;}
   </style>
-  <script>
-  var d = new Date();
-  function removeLS() {
-    var load_screen = document.getElementById("loadingScreen");
-    document.body.removeChild(load_screen);
-  }
-  window.addEventListener("load", function(){
-    var diff = Math.abs(new Date() - d);
-    console.log(diff);
-    if (diff <= 2000) {
-      var delay = 2000 - diff;
-      setTimeout(removeLS,delay);
-    } else {
-      removeLS();
-    }
-  });
-  </script>
+  <script>var LSDate=Date.now();addEventListener("pageshow",()=>{var e=()=>{document.getElementById("loadingScreen").parentNode.removeChild(document.getElementById("loadingScreen"));document.getElementById("loading-seconds").innerHTML=(Date.now()-pageStart)/1000};Date.now()-LSDate>=1000?e():setTimeout(e,Date.now()+1000-Date.now())});</script></div>
   <head>
     <title>
       Angelo's blog
